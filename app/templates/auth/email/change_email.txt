@@ -1,0 +1,11 @@
+{{ user.username }}，您好
+
+您正在更改电子邮箱地址。
+
+为了保证您的账户安全，请验证您的电子邮箱地址。
+
+{{ url_for('auth.change_email', token=token, _external=True) }}
+
+感谢您。
+
+CWZ

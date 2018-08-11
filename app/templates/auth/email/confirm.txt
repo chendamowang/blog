@@ -1,0 +1,9 @@
+{{ user.username }}，您好
+
+为了保证您的账户安全，请验证您的电子邮箱地址。
+
+{{ url_for('auth.confirm', token=token, _external=True) }}
+
+感谢您协助我们维护账户的安全。
+
+CWZ
