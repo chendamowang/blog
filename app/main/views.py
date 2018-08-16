@@ -12,7 +12,6 @@ from ..decorators import admin_required, permission_required
 @main.route('/', methods=['GET', 'POST'])
 def index():
     form = PostForm()
-    print current_user.can(Permission.WRITE_ARTICLES)
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
         post = Post(body=form.body.data,
                     author=current_user._get_current_object())
@@ -27,7 +26,7 @@ def index():
         query = current_user.followed_posts
     else:
         query = Post.query
-    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(
+    pagination = query.order_by(Post.timestamp.desc()).paginate(
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
         error_out=False)
     posts = pagination.items
@@ -124,6 +123,22 @@ def post(id):
         error_out=False) 
     comments = pagination.items   
     return render_template('post.html', posts=[post], form=form, comments=comments, pagination=pagination)
+
+@main.route('/delete-comment/<int:id>')
+def delete_comment(id):
+    comment = Comment.query.get_or_404(id)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('已删除评论。')
+    return redirect(url_for('.post', id=comment.post_id, page=-1))
+
+@main.route('/delete/<int:id>')
+def delete(id):
+    post = Post.query.get_or_404(id)
+    db.session.delete(post)
+    db.session.commit()
+    flash('已删除文章。')
+    return redirect(url_for('.user', username=current_user.username))
 
 @main.route('/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
