@@ -9,6 +9,7 @@ from wtforms.validators import Required, Length, Email, Regexp
 from wtforms import ValidationError
 from flask_wtf.file import FileAllowed
 from flask_pagedown.fields import PageDownField
+from ..models import Role 
 
 
 class NameForm(FlaskForm):
