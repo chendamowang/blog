@@ -3,8 +3,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
-    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'bugaosuni'
+    SQLALCHEMY_COMMIT_ON_TEARDOWN = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAIL_SERVER = 'smtp.163.com'
     MAIL_PORT = 465
@@ -27,6 +27,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+        #'mysql://root:123@localhost:3306/blog_dev'
 
 
 class TestingConfig(Config):
