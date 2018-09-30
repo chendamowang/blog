@@ -1,11 +1,17 @@
-Flasky
+Flask-blog
 ======
+感谢 Miguel Grinberg 提供的 flask 学习。[https://github.com/miguelgrinberg/flasky-first-edition]
 
-This repository contains the source code examples for the second edition of my O'Reilly book [Flask Web Development](http://www.flaskbook.com).
+##有何修改：
+* 修改了一些前端样式，并布置成中文。
+* 新增了一些功能。
+* 改进了头像功能，用户可以自由上传头像。
+* 实现了类似d jango-admin 的后台。
+* 集成了 flask-DebugToolbar 进行调试。
+* 数据库可以支持 mysql。
 
-The commits and tags in this repository were carefully created to match the sequence in which concepts are presented in the book. Please read the section titled "How to Work with the Example Code" in the book's preface for instructions.
+##部署：
+在linux环境中使用 Nginx+Gunicorn+supervisor来部署。
 
-For Readers of the First Edition of the Book
---------------------------------------------
-
-The code examples for the first edition of the book were moved to a different repository: [https://github.com/miguelgrinberg/flasky-first-edition](https://github.com/miguelgrinberg/flasky-first-edition).
+    * superviso 管理 Gunicorn 配置参考 supervisor.txt。
+    * nginx 配置参考 nginx.txt。
