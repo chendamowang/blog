@@ -15,5 +15,5 @@ Flask-blog
 ---
 在linux环境中使用 Nginx+Gunicorn+supervisor来部署。
 
-    * superviso 管理 Gunicorn 配置参考 supervisor.txt。
+    * supervisor 管理 Gunicorn 配置参考 supervisor.txt。
     * nginx 配置参考 nginx.txt。
